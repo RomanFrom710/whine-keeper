@@ -1,0 +1,20 @@
+{
+  "name": "renty-core",
+  "version": "0.0.1",
+  "description": "Core package with parsing",
+  "scripts": {
+    "test": "jest",
+    "test:integration": "jest .+\\.integration --no-cache --runInBand",
+    "test:unit": "jest unit"
+  },
+  "author": "Roman Chaley",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "convict": "^4.4.1",
+    "esm": "^3.2.22",
+    "mongoose": "^5.5.0",
+    "mongoose-timestamp": "^0.6.0"
+  }
+}
