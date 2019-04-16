@@ -1,9 +1,9 @@
-import Apartment from './apartment';
-import Snapshot from './snapshot';
+import Article from './article';
+import Comment from './comment';
 import Task from './task';
 
 export {
-  Apartment,
-  Snapshot,
+  Article,
+  Comment,
   Task,
 };

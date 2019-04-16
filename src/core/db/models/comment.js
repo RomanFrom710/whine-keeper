@@ -18,6 +18,8 @@ const commentSchema = new mongoose.Schema({
 
   isRemoved: {type: Boolean},
   history: {type: [snapshotSchema], default: []},
+
+  article: {type: mongoose.Schema.Types.ObjectId, ref: 'Article', required: true},
 });
 
 commentSchema.plugin(timestamps);
