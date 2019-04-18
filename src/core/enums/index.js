@@ -1,5 +1,9 @@
-export const ONLINER_SECTION = {
-
+export const ONLINER_CATEGORY = {
+  auto: 'auto',
+  opinions: 'opinions',
+  people: 'people',
+  realt: 'realt',
+  tech: 'tech',
 };
 
 export const TASK_CONSUMER = {

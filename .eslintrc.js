@@ -11,6 +11,8 @@ module.exports = {
   rules: {
     'class-methods-use-this': 'off',
 
+    'no-confusing-arrow': 'off',
+
     'no-underscore-dangle': ['error', {allow: ['_id']}], // mongodb _id field
 
     "no-unused-vars": [ 

@@ -8,18 +8,23 @@ const snapshotSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
-  authorId: {type: Number, required: true},
+  authorId: {type: Number, required: true, index: true},
   authorName: {type: String, required: true},
   content: {type: String, required: true},
   postedAt: {type: Date, required: true},
 
-  dislikes: {type: Number, required: true},
-  likes: {type: Number, required: true},
+  dislikes: {type: Number, required: true, index: true},
+  likes: {type: Number, required: true, index: true},
 
   isRemoved: {type: Boolean},
   history: {type: [snapshotSchema], default: []},
 
-  article: {type: mongoose.Schema.Types.ObjectId, ref: 'Article', required: true},
+  article: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Article',
+    required: true,
+    index: true,
+  },
 });
 
 commentSchema.plugin(timestamps);
