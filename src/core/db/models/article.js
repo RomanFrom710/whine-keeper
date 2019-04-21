@@ -4,6 +4,7 @@ import timestamps from 'mongoose-timestamp';
 import {ONLINER_CATEGORY} from '../../enums';
 
 const snapshotSchema = new mongoose.Schema({
+  title: {type: String},
   views: {type: Number, required: true},
 });
 
