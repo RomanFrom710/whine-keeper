@@ -1,5 +1,38 @@
-import {mongoose} from 'mongoose';
-import timestamps from 'mongoose-timestamp';
+import Sequelize from 'sequelize';
+
+import BaseModel from './base';
+
+export default class Comment extends BaseModel {}
+author: {type: Sequelize.STRING, allowNull: false},
+category: {type: Sequelize.ENUM(Object.values(ONLINER_CATEGORY)), allowNull: false},
+onlinerId: {type: Sequelize.INTEGER, allowNull: false},
+postedAt: {type: Sequelize.DATE, allowNull: false},
+title: {type: Sequelize.STRING, allowNull: false},
+url: {type: Sequelize.STRING, allowNull: false},
+views: {type: Sequelize.INTEGER, allowNull: false},
+Comment.init({
+  authorId: {type: Sequelize.INTEGER, allowNull: false},
+  authorName: {type: Sequelize.STRING, allowNull: false},
+  content: {type: Sequelize.STRING, allowNull: false},
+  postedAt: {type: Sequelize.DATE, allowNull: false},
+
+  dislikes: {type: Sequelize.INTEGER, allowNull: false},
+  likes: {type: Sequelize.INTEGER, allowNull: false},
+
+  isRemoved: {type: Sequelize.BOOLEAN},
+
+  article: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'article',
+    required: true,
+    index: true,
+  },
+  parent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'comment',
+    index: true,
+  },
+})
 
 const snapshotSchema = new mongoose.Schema({
   content: {type: String},
@@ -8,27 +41,8 @@ const snapshotSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
-  authorId: {type: Number, required: true, index: true},
-  authorName: {type: String, required: true},
-  content: {type: String, required: true},
-  postedAt: {type: Date, required: true},
 
-  dislikes: {type: Number, required: true, index: true},
-  likes: {type: Number, required: true, index: true},
-
-  isRemoved: {type: Boolean},
-  history: {type: [snapshotSchema], default: []},
-
-  article: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Article',
-    required: true,
-    index: true,
-  },
 });
 
 commentSchema.plugin(timestamps);
 snapshotSchema.plugin(timestamps);
-
-export {commentSchema};
-export default mongoose.model('apartment', commentSchema);

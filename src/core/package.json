@@ -14,7 +14,6 @@
     "cheerio": "^1.0.0-rc.3",
     "convict": "^4.4.1",
     "esm": "^3.2.22",
-    "mongoose": "^5.5.0",
-    "mongoose-timestamp": "^0.6.0"
+    "sequelize": "^5.8.6"
   }
 }
